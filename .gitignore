@@ -1,0 +1,12 @@
+.DS_Store
+node_modules/
+npm-debug.log*
+
+# Runtime data: accounts, archives, and generated review images stay local.
+data/*
+!data/.gitkeep
+review-images/*
+!review-images/.gitkeep
+
+# Design/export scratch files.
+outputs/
