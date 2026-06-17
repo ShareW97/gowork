@@ -1,14 +1,12 @@
 name = "gowork0"
+main = "src/worker.js"
 compatibility_date = "2026-06-18"
-pages_build_output_dir = "dist"
+assets = { directory = "./dist", binding = "ASSETS" }
 
-# Configure these bindings in Cloudflare Pages for both Production and Preview:
+# Configure these bindings in Cloudflare Workers settings:
 # - KV namespace binding: GO_WORK_DATA
 # - R2 bucket binding: GO_WORK_IMAGES
 #
-# Git-connected Cloudflare Pages should use:
+# Cloudflare Workers Builds should use:
 # - Build command: npm run build
-# - Build output directory: dist
-# - Deploy command: leave empty
-#
-# Do not run a Wrangler deploy command inside a Git-connected Pages build.
+# - Deploy command: npx wrangler deploy

@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build-cloudflare.mjs",
-    "dev:cloudflare": "npm run build && npx wrangler pages dev dist",
+    "deploy:cloudflare": "npm run build && npx wrangler deploy",
+    "dev:cloudflare": "npm run build && npx wrangler dev",
     "start": "node server.mjs",
     "test": "node --test"
   }

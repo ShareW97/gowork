@@ -29,4 +29,4 @@ writeFileSync(
   ].join("\n"),
 );
 
-console.log("Cloudflare Pages build ready: dist/");
+console.log("Cloudflare build ready: dist/");
