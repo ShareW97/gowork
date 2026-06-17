@@ -78,3 +78,32 @@ node --test
 ```
 
 共享账号与归档数据保存在启动服务电脑的 `data/app-data.json` 中；浏览器本地 `localStorage` 仅用于缓存与会话登录状态。
+
+## Cloudflare 部署
+
+项目已经适配 Cloudflare Pages：
+
+- 静态网页由 Pages 托管，构建输出目录为 `dist`
+- `/api/data` 使用 Cloudflare KV 保存账号与归档数据
+- `/api/images` 使用 Cloudflare R2 保存截图和变化图
+- `/review-images/...` 会从 R2 读取报告图片
+
+在 Cloudflare Pages 连接 GitHub 仓库 `ShareW97/gowork` 时，建议这样配置：
+
+- Framework preset：`None`
+- Build command：`npm run build`
+- Build output directory：`dist`
+- Root directory：留空
+
+然后在 Pages 项目的 Production 与 Preview 环境都添加绑定：
+
+- KV namespace binding：`GO_WORK_DATA`
+- R2 bucket binding：`GO_WORK_IMAGES`
+
+绑定完成后重新部署即可。Cloudflare 云端不会使用本地 `server.mjs`，该文件仍保留给线下课堂局域网一键启动使用。
+
+如需通过命令行部署：
+
+```bash
+npm run deploy:cloudflare
+```

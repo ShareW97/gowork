@@ -1,0 +1,7 @@
+name = "gowork"
+compatibility_date = "2026-06-18"
+pages_build_output_dir = "dist"
+
+# Configure these bindings in Cloudflare Pages for both Production and Preview:
+# - KV namespace binding: GO_WORK_DATA
+# - R2 bucket binding: GO_WORK_IMAGES

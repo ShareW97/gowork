@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "node scripts/build-cloudflare.mjs",
+    "deploy:cloudflare": "npm run build && npx wrangler pages deploy dist --project-name gowork",
+    "dev:cloudflare": "npm run build && npx wrangler pages dev dist",
     "start": "node server.mjs",
     "test": "node --test"
   }
