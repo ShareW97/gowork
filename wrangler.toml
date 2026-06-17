@@ -5,3 +5,12 @@ pages_build_output_dir = "dist"
 # Configure these bindings in Cloudflare Pages for both Production and Preview:
 # - KV namespace binding: GO_WORK_DATA
 # - R2 bucket binding: GO_WORK_IMAGES
+#
+# Git-connected Cloudflare Pages should use:
+# - Build command: npm run build
+# - Build output directory: dist
+# - Deploy command: leave empty
+#
+# Do not use `npx wrangler deploy` for this Pages project. If a manual
+# deploy command is needed, use:
+#   npx wrangler pages deploy dist --project-name gowork

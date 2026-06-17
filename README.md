@@ -94,6 +94,7 @@ node --test
 - Build command：`npm run build`
 - Build output directory：`dist`
 - Root directory：留空
+- Deploy command：留空
 
 然后在 Pages 项目的 Production 与 Preview 环境都添加绑定：
 
@@ -101,6 +102,14 @@ node --test
 - R2 bucket binding：`GO_WORK_IMAGES`
 
 绑定完成后重新部署即可。Cloudflare 云端不会使用本地 `server.mjs`，该文件仍保留给线下课堂局域网一键启动使用。
+
+如果 Cloudflare 构建日志里出现 `Executing user deploy command: npx wrangler deploy`，说明 Pages 项目里误填了 Workers 部署命令。请在 Pages 的 Build settings 中删除这条 Deploy command，或改为：
+
+```bash
+npx wrangler pages deploy dist --project-name gowork
+```
+
+不要在 Pages 项目中使用 `npx wrangler deploy`。
 
 如需通过命令行部署：
 
