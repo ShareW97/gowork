@@ -12,6 +12,3 @@ pages_build_output_dir = "dist"
 # - Deploy command: leave empty
 #
 # Do not run a Wrangler deploy command inside a Git-connected Pages build.
-# If a manual deploy is needed from a local terminal after `wrangler login`,
-# use:
-#   npx wrangler pages deploy dist --project-name gowork0

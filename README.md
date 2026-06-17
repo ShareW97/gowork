@@ -105,12 +105,6 @@ node --test
 
 如果 Cloudflare 构建日志里出现 `Executing user deploy command: ...`，说明 Pages 项目里仍然填了自定义 Deploy command。GitHub 连接式 Pages 已经会自动发布 `dist`，所以请在 Pages 的 Build settings 中把 Deploy command 删除并保持为空。
 
-不要在 Pages 项目的 Deploy command 中使用 `npx wrangler deploy` 或 `npx wrangler pages deploy ...`。这类命令只适合在本地终端手动部署时使用，并且需要单独完成 `wrangler login` 或配置具备 Pages 写入权限的 Cloudflare API Token。
-
-如需通过命令行部署：
-
-```bash
-npm run deploy:cloudflare
-```
+不要在 Pages 项目的 Deploy command 中使用 `npx wrangler deploy` 或 `npx wrangler pages deploy ...`。这些命令会触发额外的 Wrangler 认证流程，容易导致 `Authentication error [code: 10000]`。
 
 当前 Cloudflare Pages 项目名按构建日志使用 `gowork0`；如果你在 Cloudflare 控制台改了项目名，请同步修改 `package.json` 与 `wrangler.toml` 中的项目名。
