@@ -1,4 +1,4 @@
-name = "gowork"
+name = "gowork0"
 compatibility_date = "2026-06-18"
 pages_build_output_dir = "dist"
 
@@ -11,6 +11,7 @@ pages_build_output_dir = "dist"
 # - Build output directory: dist
 # - Deploy command: leave empty
 #
-# Do not use `npx wrangler deploy` for this Pages project. If a manual
-# deploy command is needed, use:
-#   npx wrangler pages deploy dist --project-name gowork
+# Do not run a Wrangler deploy command inside a Git-connected Pages build.
+# If a manual deploy is needed from a local terminal after `wrangler login`,
+# use:
+#   npx wrangler pages deploy dist --project-name gowork0

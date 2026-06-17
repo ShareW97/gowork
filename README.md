@@ -94,7 +94,7 @@ node --test
 - Build command：`npm run build`
 - Build output directory：`dist`
 - Root directory：留空
-- Deploy command：留空
+- Deploy command：留空。这里不要填 `npx wrangler deploy`，也不要填 `npx wrangler pages deploy ...`
 
 然后在 Pages 项目的 Production 与 Preview 环境都添加绑定：
 
@@ -103,16 +103,14 @@ node --test
 
 绑定完成后重新部署即可。Cloudflare 云端不会使用本地 `server.mjs`，该文件仍保留给线下课堂局域网一键启动使用。
 
-如果 Cloudflare 构建日志里出现 `Executing user deploy command: npx wrangler deploy`，说明 Pages 项目里误填了 Workers 部署命令。请在 Pages 的 Build settings 中删除这条 Deploy command，或改为：
+如果 Cloudflare 构建日志里出现 `Executing user deploy command: ...`，说明 Pages 项目里仍然填了自定义 Deploy command。GitHub 连接式 Pages 已经会自动发布 `dist`，所以请在 Pages 的 Build settings 中把 Deploy command 删除并保持为空。
 
-```bash
-npx wrangler pages deploy dist --project-name gowork
-```
-
-不要在 Pages 项目中使用 `npx wrangler deploy`。
+不要在 Pages 项目的 Deploy command 中使用 `npx wrangler deploy` 或 `npx wrangler pages deploy ...`。这类命令只适合在本地终端手动部署时使用，并且需要单独完成 `wrangler login` 或配置具备 Pages 写入权限的 Cloudflare API Token。
 
 如需通过命令行部署：
 
 ```bash
 npm run deploy:cloudflare
 ```
+
+当前 Cloudflare Pages 项目名按构建日志使用 `gowork0`；如果你在 Cloudflare 控制台改了项目名，请同步修改 `package.json` 与 `wrangler.toml` 中的项目名。
